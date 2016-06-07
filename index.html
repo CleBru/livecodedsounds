@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diven into Algoraves and Live Coding</title>
+</head>
+<body>
+
+<textarea class="code">
+
+
+</textarea>
+<div class="result"></div>
+
+<style type="text/css">
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+  }
+  .code {
+    height: 150vw;
+    width: 25vw;
+
+    color: white;
+    background-color: black;
+
+    font-family: monaco;
+    float: left;
+
+    padding: 10px;
+
+  }
+
+  .result {
+            float: right;
+
+    height: 150vw;
+    width: 70vw;
+    background-color: black ;
+  
+  }
+
+  a {
+    font-size: 15em;
+    color: white;
+  }
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.min.js"></script>
+
+<script type="text/javascript">
+
+  var rules = {
+
+    'video{tracks':'<iframe width="720" height="480" src="https://www.youtube.com/embed/X_NQKPH91kM?autoplay=1" frameborder="0" allowfullscreen></iframe>',
+
+    'montruc':'<h1> mon truc </h1>',
+
+    'wired': '<a href="http://www.wired.co.uk/news/archive/2009-09/25/making-music-with-live-computer-code-">Wired</a>'
+
+  }
+
+  $( ".code" ).on('input', function() {
+    var text = $(this).val();
+    $('.result').html(replaceAll(text,rules));
+  })
+
+  function replaceAll(str,mapObj){
+      var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+
+      return str.replace(re, function(matched){
+          return rules[matched.toLowerCase()];
+      });
+  }
+
+
+</script>
+
+</body>
+</html>
